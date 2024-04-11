@@ -15,3 +15,5 @@ pub mod fn_move_borrow_mut;
 pub mod fn_return_value_ref;
 pub mod higher_func;
 pub mod result_option_panic;
+
+pub mod unwrap;
