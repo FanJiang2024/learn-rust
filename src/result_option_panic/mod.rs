@@ -1,5 +1,7 @@
+
 #[test]
 fn result_option_panic_test() {
+    use std::panic::catch_unwind;
     use std::fmt::Display;
     use std::error::Error;
 
