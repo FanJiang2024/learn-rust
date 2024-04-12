@@ -17,3 +17,5 @@ pub mod higher_func;
 pub mod result_option_panic;
 
 pub mod unwrap;
+
+pub mod custom_error;
