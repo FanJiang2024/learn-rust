@@ -23,3 +23,4 @@ pub mod custom_error;
 pub mod borrow_checker;
 
 pub mod lifetimes;
+pub mod generic;
