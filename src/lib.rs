@@ -26,3 +26,4 @@ pub mod lifetimes;
 pub mod generic;
 pub mod trait_learn;
 pub mod trait_object_box;
+pub mod trait_generic_learn;
