@@ -1,6 +1,6 @@
 #[test]
 fn enum_match_test() {
-    #[derive(Debug, PartialEq)]
+    #[derive(Debug)]
     enum Res {
         Zero,
         OneOrTwo,
@@ -8,6 +8,21 @@ fn enum_match_test() {
         EvenNumber,
         Other
     }
+
+    impl PartialEq for Res {
+        fn eq(&self, other: &Self) -> bool {
+            // 模式匹配很强大！！！
+            match (self, other) {
+                (Res::EvenNumber, Res::EvenNumber) => true,
+                (Res::OneOrTwo, Res::OneOrTwo) => true,
+                (Res::ThreeToNine, Res::ThreeToNine) => true,
+                (Res::Zero, Res::Zero) => true,
+                (Res::Other, Res::Other) => true,
+                _ => false
+            }
+        }
+    }
+
 
     fn match_number(n :i32) -> Res {
         match n {
@@ -58,4 +73,24 @@ fn enum_match_test() {
 
     let house = BuildingLocation::Unknown;
     house.print_location();
+}
+
+#[test]
+fn enum_test() {
+    #[derive(Debug, PartialEq)]
+    enum Color {
+        Black = 0,
+        Pink = 1
+    }
+
+    // not work!!!
+    // impl PartialEq for Color {
+    //     fn eq(&self, other: &Self) -> bool {
+    //         self == other
+    //     }
+    // }
+
+    assert_eq!(Color::Black, Color::Black);
+    assert_eq!(Color::Pink, Color::Pink);
+    assert_ne!(Color::Black, Color::Pink);
 }
