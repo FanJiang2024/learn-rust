@@ -77,18 +77,28 @@ fn enum_match_test() {
 
 #[test]
 fn enum_test() {
-    #[derive(Debug, PartialEq)]
+    #[derive(Debug, Clone, Copy)]
+    #[repr(u8)]
     enum Color {
         Black = 0,
         Pink = 1
     }
 
     // not work!!!
-    // impl PartialEq for Color {
-    //     fn eq(&self, other: &Self) -> bool {
-    //         self == other
-    //     }
-    // }
+    impl PartialEq for Color {
+        fn eq(&self, other: &Self) -> bool {
+
+            // method 1 
+            *self as u8 == *other as u8
+
+            // method 2
+            // match (self, other) {
+            //     (Color::Black, Color::Black) => true,
+            //     (Color::Pink, Color::Pink) => true,
+            //     _ => false  
+            // }
+        }
+    }
 
     assert_eq!(Color::Black, Color::Black);
     assert_eq!(Color::Pink, Color::Pink);
